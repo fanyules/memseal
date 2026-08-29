@@ -39,7 +39,7 @@ experiments:
     status: "passed_unlock_stack_staging"
   - id: "MS-G0D"
     purpose: "Patched-stack path/lifetime discovery census"
-    status: "quick_current_stack_discovery_design"
+    status: "quick_current_stack_implementation_ready_not_frozen"
   - id: "MS-G0C"
     purpose: "Fresh-process paired confirmation and dominance validation"
     status: "blocked_on_discovery"

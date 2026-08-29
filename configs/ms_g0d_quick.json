@@ -1,0 +1,77 @@
+{
+  "schema": "memseal.ms_g0d_quick.v1",
+  "evidence_scope": "current_stack_triage_not_scientific_gate",
+  "seed": 2026082902,
+  "model": {
+    "asset_id": "Qwen3-14B-BF16",
+    "path": "/data/models/qwen/Qwen3-14B-BF16",
+    "dtype": "bfloat16",
+    "config_sha256": "e73c3664ca09b10a673fef0c22e8a6b456201d49bd4713c9691f775720e8857a",
+    "index_sha256": "62d7ad35757bae5e7baa452cb1483178b7daa50e869e923226b8da10871f7ebc"
+  },
+  "platforms": {
+    "a100": {
+      "physical_devices": [0, 1, 2, 3],
+      "tp": 4,
+      "expected": {
+        "device_name_contains": "A100",
+        "torch": "2.11.0+cu128",
+        "vllm": "0.23.0",
+        "cuda": "12.8"
+      },
+      "additional_config": null
+    },
+    "910b": {
+      "physical_devices": [0, 1, 2, 3],
+      "tp": 4,
+      "expected": {
+        "device_name_contains": "910B",
+        "driver": "25.5.1",
+        "firmware": "7.8.0.6.201",
+        "cann": "9.1.0",
+        "torch": "2.10.0+cpu",
+        "torch_npu": "2.10.0.post4",
+        "vllm": "0.23.0",
+        "vllm_ascend": "0.23.0"
+      },
+      "additional_config": {
+        "enable_cpu_binding": true,
+        "enable_flashcomm1": false
+      }
+    }
+  },
+  "engine": {
+    "max_model_len": 4096,
+    "max_num_seqs": 32,
+    "max_num_batched_tokens": 4096,
+    "kv_cache_memory_bytes": 8589934592,
+    "enable_prefix_caching": false,
+    "async_scheduling": false,
+    "disable_custom_all_reduce": true,
+    "enforce_eager": false
+  },
+  "trace_order": [
+    "baseline_decode",
+    "sampler_first",
+    "sampler_repeat",
+    "max_prefill",
+    "wide_decode",
+    "mixed"
+  ],
+  "paths": {
+    "baseline_decode": {"kind": "standard", "num_sequences": 8, "prompt_tokens": 128, "output_tokens": 8, "temperature": 0.0, "top_p": 1.0},
+    "sampler_first": {"kind": "standard", "num_sequences": 32, "prompt_tokens": 128, "output_tokens": 1, "temperature": 1.0, "top_p": 0.9},
+    "sampler_repeat": {"kind": "standard", "num_sequences": 32, "prompt_tokens": 128, "output_tokens": 1, "temperature": 1.0, "top_p": 0.9},
+    "max_prefill": {"kind": "standard", "num_sequences": 1, "prompt_tokens": 4095, "output_tokens": 1, "temperature": 0.0, "top_p": 1.0},
+    "wide_decode": {"kind": "standard", "num_sequences": 32, "prompt_tokens": 128, "output_tokens": 16, "temperature": 0.0, "top_p": 1.0},
+    "mixed": {"kind": "mixed", "background_sequences": 16, "background_prompt_tokens": 128, "background_output_tokens": 4, "foreground_prompt_tokens": 2048, "foreground_output_tokens": 1}
+  },
+  "prompt_pattern": "MemSeal measures ordered serving-path memory lifetimes.",
+  "decision": {
+    "cross_platform_floor_mib": 256,
+    "one_platform_strong_mib": 512,
+    "continue": "continue_to_formal_stack_staging",
+    "stop": "stop_no_large_cross_runtime_path_signal",
+    "blocked": "blocked_technical_invalid"
+  }
+}
