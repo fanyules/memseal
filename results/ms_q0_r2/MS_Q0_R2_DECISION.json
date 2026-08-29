@@ -1,0 +1,56 @@
+{
+  "cells": {
+    "910b_compiled": {
+      "canonical_output_digest": "3640116c5dddb5ee3b9e94d1034ee23ebbe2f78a9a8a3efd936c601278735e54",
+      "common_memory_observable": true,
+      "engine_and_asset_valid": true,
+      "error": null,
+      "error_type": null,
+      "failure_stage": null,
+      "local_correctness_valid": true,
+      "status": "success"
+    },
+    "910b_eager": {
+      "canonical_output_digest": "3640116c5dddb5ee3b9e94d1034ee23ebbe2f78a9a8a3efd936c601278735e54",
+      "common_memory_observable": true,
+      "engine_and_asset_valid": true,
+      "error": null,
+      "error_type": null,
+      "failure_stage": null,
+      "local_correctness_valid": true,
+      "status": "success"
+    },
+    "a100_compiled": {
+      "canonical_output_digest": "3640116c5dddb5ee3b9e94d1034ee23ebbe2f78a9a8a3efd936c601278735e54",
+      "common_memory_observable": true,
+      "engine_and_asset_valid": true,
+      "error": null,
+      "error_type": null,
+      "failure_stage": null,
+      "local_correctness_valid": true,
+      "status": "success"
+    },
+    "a100_eager": {
+      "canonical_output_digest": "3640116c5dddb5ee3b9e94d1034ee23ebbe2f78a9a8a3efd936c601278735e54",
+      "common_memory_observable": true,
+      "engine_and_asset_valid": true,
+      "error": null,
+      "error_type": null,
+      "failure_stage": null,
+      "local_correctness_valid": true,
+      "status": "success"
+    }
+  },
+  "continue_to_stack_staging": true,
+  "created_at": "2026-08-29T09:26:47.625488+00:00",
+  "cross_plan_output_identity": {
+    "910b": true,
+    "a100": true
+  },
+  "decision_key": "all_checks_pass",
+  "evidence_scope": "engineering_qualification_not_paper_evidence",
+  "gate": "MS-Q0",
+  "schema": "memseal.ms_q0.decision.v1",
+  "scientific_oracle_census_unblocked": false,
+  "verdict": "pass_unlock_stack_staging"
+}

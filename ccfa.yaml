@@ -8,8 +8,8 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "ms_q0_r2_frozen_ready_to_run"
-  gate: "MS-Q0-R2"
+  current: "ms_g0d_quick_discovery_design"
+  gate: "MS-G0D"
   updated_at: "2026-08-29"
 artifacts:
   qualification_protocol: "docs/MS_Q0_PROTOCOL.md"
@@ -36,10 +36,10 @@ experiments:
     status: "blocked_shutdown_metadata_only_all_cell_checks_passed"
   - id: "MS-Q0-R2"
     purpose: "Record fresh-process exit as the vLLM 0.23 cleanup mode"
-    status: "frozen_not_run"
+    status: "passed_unlock_stack_staging"
   - id: "MS-G0D"
     purpose: "Patched-stack path/lifetime discovery census"
-    status: "blocked_on_ms_q0_and_stack_staging"
+    status: "quick_current_stack_discovery_design"
   - id: "MS-G0C"
     purpose: "Fresh-process paired confirmation and dominance validation"
     status: "blocked_on_discovery"
