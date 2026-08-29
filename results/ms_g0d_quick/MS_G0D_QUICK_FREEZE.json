@@ -1,0 +1,61 @@
+{
+  "config_path": "configs/ms_g0d_quick.json",
+  "config_sha256": "2e8d1db3dd985e63cdfd50b230f5c1ecd815bae3a1f6dc10052264de7faa26ec",
+  "created_at": "2026-08-29T09:40:04.996974+00:00",
+  "decision": {
+    "blocked": "blocked_technical_invalid",
+    "continue": "continue_to_formal_stack_staging",
+    "cross_platform_floor_mib": 256,
+    "one_platform_strong_mib": 512,
+    "stop": "stop_no_large_cross_runtime_path_signal"
+  },
+  "evidence_scope": "current_stack_triage_not_scientific_gate",
+  "formal_memseal_gate_unblocked": false,
+  "matrix": [
+    {
+      "fresh_processes": 1,
+      "physical_devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "plan": "compiled",
+      "platform": "a100",
+      "tensor_parallel_size": 4
+    },
+    {
+      "fresh_processes": 1,
+      "physical_devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "plan": "compiled",
+      "platform": "910b",
+      "tensor_parallel_size": 4
+    }
+  ],
+  "pre_output_repository_commit": "3154205056ca89445cd62a9901163a4da87badc7",
+  "protocol_path": "docs/MS_G0D_QUICK_PROTOCOL.md",
+  "protocol_sha256": "c36d19e907988e45ae4973c9b9c4c49e9788aa057f72b53c8d46201aa1590508",
+  "schema": "memseal.ms_g0d_quick.freeze.v1",
+  "source_sha256": {
+    "scripts/adjudicate_ms_g0d_quick.py": "648b1a1d73917ed77566b305851560aa0a60aca026a684f488c239eba33b1ef8",
+    "scripts/freeze_ms_g0d_quick.py": "522d284952cd531d9d531718cb3260d503a875045d45cb952245d63427c56110",
+    "scripts/run_ms_g0d_quick.py": "ed42eeef1e31f66a1a6c73efc5651aec726511a2a22bd78f17389061d59908d4",
+    "scripts/run_ms_q0.py": "f1c1d3bf1b4637b85c0aa05cbac531549006ae87baf9e0090e044e96603d8e0a",
+    "src/memseal/contracts.py": "aee5d324a3b63f603a4b79102d4d574a2baf33aad9f98f71c2603fe535a724d0",
+    "src/memseal/discovery.py": "c1d1bb06d1dcbaa88b73ad8384ffede86ceade79c245ad1af4b678431a7bad8a"
+  },
+  "status": "frozen",
+  "trace_order": [
+    "baseline_decode",
+    "sampler_first",
+    "sampler_repeat",
+    "max_prefill",
+    "wide_decode",
+    "mixed"
+  ]
+}
