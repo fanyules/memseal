@@ -8,8 +8,8 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "ms_g0d_quick_frozen_ready_to_run"
-  gate: "MS-G0D"
+  current: "stopped_no_large_cross_runtime_path_signal"
+  gate: "MS-G0D-Q"
   updated_at: "2026-08-29"
 artifacts:
   qualification_protocol: "docs/MS_Q0_PROTOCOL.md"
@@ -20,13 +20,13 @@ artifacts:
 claims:
   - id: "MS-C0"
     text: "A single profiling window leaves repeatable path- or order-dependent residual non-KV memory gaps after targeted upstream fixes."
-    status: "not_tested"
+    status: "formal_gate_not_run_stopped_on_quick_triage"
   - id: "MS-C1"
     text: "A pre-execution dominance reducer preserves the path-complete per-rank envelope with substantially fewer canaries."
-    status: "not_tested"
+    status: "not_tested_stopped_before_formal_gate"
   - id: "MS-C2"
     text: "A ready seal can safely admit more KV capacity than strong transferable fixed-margin and one-shot profiling baselines."
-    status: "not_tested"
+    status: "not_tested_stopped_before_formal_gate"
 experiments:
   - id: "MS-Q0"
     purpose: "TP4 correctness, dispatch, and common memory-observability qualification"
@@ -39,7 +39,7 @@ experiments:
     status: "passed_unlock_stack_staging"
   - id: "MS-G0D"
     purpose: "Patched-stack path/lifetime discovery census"
-    status: "quick_current_stack_frozen_not_run"
+    status: "quick_triage_completed_stop_no_large_cross_runtime_path_signal"
   - id: "MS-G0C"
     purpose: "Fresh-process paired confirmation and dominance validation"
-    status: "blocked_on_discovery"
+    status: "not_run_stopped_on_quick_triage"

@@ -1,0 +1,555 @@
+{
+  "continue_to_formal_stack_staging": false,
+  "created_at": "2026-08-29T09:43:46.416696+00:00",
+  "decision_key": "stop",
+  "evidence_scope": "current_stack_triage_not_scientific_gate",
+  "gate": "MS-G0D-Q",
+  "paths": {
+    "baseline_decode": {
+      "910b": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 512,
+            "allocator_peak_increment_bytes": 99095040,
+            "driver_used_after_bytes": 17485185024,
+            "driver_used_before_bytes": 17328009216,
+            "persistent_driver_delta_bytes": 157175808,
+            "rank": 0,
+            "signal_bytes": 157175808
+          },
+          {
+            "allocator_current_delta_bytes": 512,
+            "allocator_peak_increment_bytes": 99095040,
+            "driver_used_after_bytes": 17485787136,
+            "driver_used_before_bytes": 17328586752,
+            "persistent_driver_delta_bytes": 157200384,
+            "rank": 1,
+            "signal_bytes": 157200384
+          },
+          {
+            "allocator_current_delta_bytes": 512,
+            "allocator_peak_increment_bytes": 99095040,
+            "driver_used_after_bytes": 17485627392,
+            "driver_used_before_bytes": 17328607232,
+            "persistent_driver_delta_bytes": 157020160,
+            "rank": 2,
+            "signal_bytes": 157020160
+          },
+          {
+            "allocator_current_delta_bytes": 512,
+            "allocator_peak_increment_bytes": 99095040,
+            "driver_used_after_bytes": 17485824000,
+            "driver_used_before_bytes": 17328271360,
+            "persistent_driver_delta_bytes": 157552640,
+            "rank": 3,
+            "signal_bytes": 157552640
+          }
+        ],
+        "platform_signal_bytes": 157552640,
+        "platform_signal_mib": 150.25390625
+      },
+      "a100": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 55052288,
+            "driver_used_after_bytes": 17547198464,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 55052288
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 55052288,
+            "driver_used_after_bytes": 17547198464,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 55052288
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 55052288,
+            "driver_used_after_bytes": 17547198464,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 55052288
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 55052288,
+            "driver_used_after_bytes": 17547198464,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 55052288
+          }
+        ],
+        "platform_signal_bytes": 55052288,
+        "platform_signal_mib": 52.501953125
+      },
+      "qualifies": false
+    },
+    "max_prefill": {
+      "910b": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236945408,
+            "driver_used_after_bytes": 17696899072,
+            "driver_used_before_bytes": 17675927552,
+            "persistent_driver_delta_bytes": 20971520,
+            "rank": 0,
+            "signal_bytes": 236945408
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236945408,
+            "driver_used_after_bytes": 17697439744,
+            "driver_used_before_bytes": 17676468224,
+            "persistent_driver_delta_bytes": 20971520,
+            "rank": 1,
+            "signal_bytes": 236945408
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236945408,
+            "driver_used_after_bytes": 17697226752,
+            "driver_used_before_bytes": 17676255232,
+            "persistent_driver_delta_bytes": 20971520,
+            "rank": 2,
+            "signal_bytes": 236945408
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236945408,
+            "driver_used_after_bytes": 17697562624,
+            "driver_used_before_bytes": 17676591104,
+            "persistent_driver_delta_bytes": 20971520,
+            "rank": 3,
+            "signal_bytes": 236945408
+          }
+        ],
+        "platform_signal_bytes": 236945408,
+        "platform_signal_mib": 225.96875
+      },
+      "a100": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220169728,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 220169728
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220169728,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 220169728
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220169728,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 220169728
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220169728,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 220169728
+          }
+        ],
+        "platform_signal_bytes": 220169728,
+        "platform_signal_mib": 209.97021484375
+      },
+      "qualifies": false
+    },
+    "mixed": {
+      "910b": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 127750656,
+            "driver_used_after_bytes": 17696899072,
+            "driver_used_before_bytes": 17696899072,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 127750656
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 127750656,
+            "driver_used_after_bytes": 17697439744,
+            "driver_used_before_bytes": 17697439744,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 127750656
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 127750656,
+            "driver_used_after_bytes": 17697226752,
+            "driver_used_before_bytes": 17697226752,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 127750656
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 127750656,
+            "driver_used_after_bytes": 17697562624,
+            "driver_used_before_bytes": 17697562624,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 127750656
+          }
+        ],
+        "platform_signal_bytes": 127750656,
+        "platform_signal_mib": 121.83251953125
+      },
+      "a100": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 110962688,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 110962688
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 110962688,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 110962688
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 110962688,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 110962688
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 110962688,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 110962688
+          }
+        ],
+        "platform_signal_bytes": 110962688,
+        "platform_signal_mib": 105.822265625
+      },
+      "qualifies": false
+    },
+    "sampler_first": {
+      "910b": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676025856,
+            "driver_used_before_bytes": 17485185024,
+            "persistent_driver_delta_bytes": 190840832,
+            "rank": 0,
+            "signal_bytes": 243808768
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676627968,
+            "driver_used_before_bytes": 17485787136,
+            "persistent_driver_delta_bytes": 190840832,
+            "rank": 1,
+            "signal_bytes": 243808768
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676468224,
+            "driver_used_before_bytes": 17485627392,
+            "persistent_driver_delta_bytes": 190840832,
+            "rank": 2,
+            "signal_bytes": 243808768
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676664832,
+            "driver_used_before_bytes": 17485824000,
+            "persistent_driver_delta_bytes": 190840832,
+            "rank": 3,
+            "signal_bytes": 243808768
+          }
+        ],
+        "platform_signal_bytes": 243808768,
+        "platform_signal_mib": 232.51416015625
+      },
+      "a100": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 19449856,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 155189248,
+            "rank": 0,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 19449856,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 155189248,
+            "rank": 1,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 19449856,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 155189248,
+            "rank": 2,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 19449856,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17547198464,
+            "persistent_driver_delta_bytes": 155189248,
+            "rank": 3,
+            "signal_bytes": 220203008
+          }
+        ],
+        "platform_signal_bytes": 220203008,
+        "platform_signal_mib": 210.001953125
+      },
+      "qualifies": false
+    },
+    "sampler_repeat": {
+      "910b": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17675927552,
+            "driver_used_before_bytes": 17676025856,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 243808768
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676468224,
+            "driver_used_before_bytes": 17676627968,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 243808768
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676255232,
+            "driver_used_before_bytes": 17676468224,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 243808768
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 243808768,
+            "driver_used_after_bytes": 17676591104,
+            "driver_used_before_bytes": 17676664832,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 243808768
+          }
+        ],
+        "platform_signal_bytes": 243808768,
+        "platform_signal_mib": 232.51416015625
+      },
+      "a100": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 220203008
+          }
+        ],
+        "platform_signal_bytes": 220203008,
+        "platform_signal_mib": 210.001953125
+      },
+      "qualifies": false
+    },
+    "wide_decode": {
+      "910b": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236999168,
+            "driver_used_after_bytes": 17696899072,
+            "driver_used_before_bytes": 17696899072,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 236999168
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236999168,
+            "driver_used_after_bytes": 17697439744,
+            "driver_used_before_bytes": 17697439744,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 236999168
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236999168,
+            "driver_used_after_bytes": 17697226752,
+            "driver_used_before_bytes": 17697226752,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 236999168
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 236999168,
+            "driver_used_after_bytes": 17697562624,
+            "driver_used_before_bytes": 17697562624,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 236999168
+          }
+        ],
+        "platform_signal_bytes": 236999168,
+        "platform_signal_mib": 226.02001953125
+      },
+      "a100": {
+        "by_rank": [
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 0,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 1,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 2,
+            "signal_bytes": 220203008
+          },
+          {
+            "allocator_current_delta_bytes": 0,
+            "allocator_peak_increment_bytes": 220203008,
+            "driver_used_after_bytes": 17702387712,
+            "driver_used_before_bytes": 17702387712,
+            "persistent_driver_delta_bytes": 0,
+            "rank": 3,
+            "signal_bytes": 220203008
+          }
+        ],
+        "platform_signal_bytes": 220203008,
+        "platform_signal_mib": 210.001953125
+      },
+      "qualifies": false
+    }
+  },
+  "qualifying_paths": [],
+  "runs": {
+    "910b": {
+      "error": null,
+      "error_type": null,
+      "failure_stage": null,
+      "status": "success",
+      "valid": true
+    },
+    "a100": {
+      "error": null,
+      "error_type": null,
+      "failure_stage": null,
+      "status": "success",
+      "valid": true
+    }
+  },
+  "schema": "memseal.ms_g0d_quick.decision.v1",
+  "scientific_oracle_census_unblocked": false,
+  "thresholds": {
+    "cross_platform_floor_bytes": 268435456,
+    "one_platform_strong_bytes": 536870912
+  },
+  "verdict": "stop_no_large_cross_runtime_path_signal"
+}
