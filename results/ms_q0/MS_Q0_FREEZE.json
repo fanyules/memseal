@@ -1,0 +1,74 @@
+{
+  "config_path": "configs/ms_q0.json",
+  "config_sha256": "390152596f6cbedf62ab0ff50048ef303ba22da5db353b6964d88a9ae4df4404",
+  "created_at": "2026-08-29T09:05:22.651952+00:00",
+  "decisions": {
+    "all_checks_pass": "pass_unlock_stack_staging",
+    "common_memory_observability_failure": "stop_no_common_observability",
+    "correctness_or_rank_dispatch_failure": "stop_cross_runtime_memseal",
+    "engine_or_asset_failure": "blocked_stack_or_asset"
+  },
+  "evidence_scope": "engineering_qualification_not_paper_evidence",
+  "matrix": [
+    {
+      "fresh_processes": 1,
+      "physical_devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "plan": "eager",
+      "platform": "a100",
+      "tensor_parallel_size": 4
+    },
+    {
+      "fresh_processes": 1,
+      "physical_devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "plan": "compiled",
+      "platform": "a100",
+      "tensor_parallel_size": 4
+    },
+    {
+      "fresh_processes": 1,
+      "physical_devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "plan": "eager",
+      "platform": "910b",
+      "tensor_parallel_size": 4
+    },
+    {
+      "fresh_processes": 1,
+      "physical_devices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "plan": "compiled",
+      "platform": "910b",
+      "tensor_parallel_size": 4
+    }
+  ],
+  "ms_g0d_unblocked": false,
+  "pre_output_repository_commit": "e9bd44a31c6b3f47837dc3543fd9c710407da2cd",
+  "protocol_path": "docs/MS_Q0_PROTOCOL.md",
+  "protocol_sha256": "0a5204dca08f45638dd306c78d2acc5e84f61835aaf8f38fa4a690aaf0707327",
+  "schema": "memseal.ms_q0.freeze.v1",
+  "source_sha256": {
+    "scripts/adjudicate_ms_q0.py": "3b8a677b5693cb18a174471e3a2596235c91aaaa321ce8835e100490d742c257",
+    "scripts/freeze_ms_q0.py": "580cab15f369361cbb8ff90a49ca65e607d64db3770d768d42eb5a003efa0685",
+    "scripts/run_ms_q0.py": "59f16c3355307aa3bc4e39758c526f1a043503cce74f0bf6b1fa98b04eca3f43",
+    "src/memseal/contracts.py": "aee5d324a3b63f603a4b79102d4d574a2baf33aad9f98f71c2603fe535a724d0"
+  },
+  "status": "frozen"
+}

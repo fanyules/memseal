@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "ms_q0_pre_output_implementation_ready"
+  current: "ms_q0_frozen_ready_to_run"
   gate: "MS-Q0"
   updated_at: "2026-08-29"
 artifacts:
@@ -29,7 +29,7 @@ claims:
 experiments:
   - id: "MS-Q0"
     purpose: "TP4 correctness, dispatch, and common memory-observability qualification"
-    status: "implementation_ready_not_yet_frozen"
+    status: "frozen_not_run"
   - id: "MS-G0D"
     purpose: "Patched-stack path/lifetime discovery census"
     status: "blocked_on_ms_q0_and_stack_staging"
