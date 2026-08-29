@@ -4,12 +4,15 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPOSITORY_ROOT / "src"))
 sys.path.insert(0, str(REPOSITORY_ROOT / "scripts"))
 
 from adjudicate_ms_q0 import adjudicate
+from run_ms_q0 import post_init_device_mismatches, runtime_audit
 
 from memseal.contracts import (
     dispatch_rows_identical,
@@ -81,6 +84,7 @@ def successful_run(platform: str, plan: str, config: dict, config_hash: str) -> 
             "index_sha256": config["model"]["index_sha256"],
         },
         "runtime_mismatches": [],
+        "post_init_runtime_mismatches": [],
         "engine_initialized": True,
         "workload_completed": True,
         "shutdown_complete": True,
@@ -94,6 +98,7 @@ def successful_run(platform: str, plan: str, config: dict, config_hash: str) -> 
             "within_wave_identical_requests": True,
             "within_run_determinism": True,
             "rank_dispatch_identity": True,
+            "post_init_device_identity": True,
             "eager_only_dispatch": True,
             "compiled_graph_dispatch": True,
             "common_memory_observability": True,
@@ -154,6 +159,30 @@ class MSQ0Tests(unittest.TestCase):
         self.assertTrue(graph_dispatch_observed(rows))
         rows[3]["rows"][0]["runtime_mode"] = "NONE"
         self.assertFalse(dispatch_rows_identical(rows))
+
+    def test_parent_runtime_audit_does_not_touch_cuda_devices(self):
+        class ForbiddenAccelerator:
+            def __getattr__(self, name):
+                raise AssertionError(f"parent accessed CUDA before worker spawn: {name}")
+
+        torch = SimpleNamespace(
+            __version__="2.11.0+cu128",
+            version=SimpleNamespace(cuda="12.8"),
+            cuda=ForbiddenAccelerator(),
+        )
+        vllm = SimpleNamespace(__version__="0.23.0")
+        with patch.dict("os.environ", {"CUDA_VISIBLE_DEVICES": "0,1,2,3"}):
+            audit = runtime_audit("a100", torch, vllm)
+        self.assertEqual(audit["visible_device_count"], 4)
+        self.assertNotIn("device_names", audit)
+
+    def test_device_identity_is_deferred_to_worker_snapshots(self):
+        rows = memory_rows()
+        for row in rows:
+            row["device_name"] = "NVIDIA A100-PCIE-40GB"
+        self.assertEqual(post_init_device_mismatches("a100", rows, self.config), [])
+        rows[2]["device_name"] = "unexpected"
+        self.assertTrue(post_init_device_mismatches("a100", rows, self.config))
 
     def test_identical_request_check_catches_known_tp_failure_shape(self):
         waves = self.runs[("910b", "eager")]["waves"]

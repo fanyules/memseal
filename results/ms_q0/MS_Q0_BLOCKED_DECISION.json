@@ -1,0 +1,56 @@
+{
+  "cells": {
+    "910b_compiled": {
+      "canonical_output_digest": null,
+      "common_memory_observable": false,
+      "engine_and_asset_valid": false,
+      "error": "missing result: 910b_tp4_compiled_r0.json",
+      "error_type": null,
+      "failure_stage": null,
+      "local_correctness_valid": false,
+      "status": "missing"
+    },
+    "910b_eager": {
+      "canonical_output_digest": null,
+      "common_memory_observable": false,
+      "engine_and_asset_valid": false,
+      "error": "WorkerProc initialization failed due to an exception in a background process. See stack trace for root cause.",
+      "error_type": "Exception",
+      "failure_stage": "engine_init",
+      "local_correctness_valid": false,
+      "status": "failed"
+    },
+    "a100_compiled": {
+      "canonical_output_digest": null,
+      "common_memory_observable": false,
+      "engine_and_asset_valid": false,
+      "error": "missing result: a100_tp4_compiled_r0.json",
+      "error_type": null,
+      "failure_stage": null,
+      "local_correctness_valid": false,
+      "status": "missing"
+    },
+    "a100_eager": {
+      "canonical_output_digest": null,
+      "common_memory_observable": false,
+      "engine_and_asset_valid": false,
+      "error": "Worker failed with error 'RuntimeError: Failed to find C compiler. Please specify via CC environment variable or set triton.knobs.build.impl.\n\nSet TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS=\"+dynamo\"\n', please check the stack trace above for the root cause",
+      "error_type": "RuntimeError",
+      "failure_stage": "engine_init",
+      "local_correctness_valid": false,
+      "status": "failed"
+    }
+  },
+  "continue_to_stack_staging": false,
+  "created_at": "2026-08-29T09:11:14.263540+00:00",
+  "cross_plan_output_identity": {
+    "910b": false,
+    "a100": false
+  },
+  "decision_key": "engine_or_asset_failure",
+  "evidence_scope": "engineering_qualification_not_paper_evidence",
+  "gate": "MS-Q0",
+  "schema": "memseal.ms_q0.decision.v1",
+  "scientific_oracle_census_unblocked": false,
+  "verdict": "blocked_stack_or_asset"
+}

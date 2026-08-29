@@ -11,6 +11,7 @@ per-rank memory observability on A100 and Ascend 910B. MS-Q0 cannot establish a
 memory gap or support a paper claim.
 
 - Qualification protocol: `docs/MS_Q0_PROTOCOL.md`
+- Qualification repair: `docs/MS_Q0_R1_PROTOCOL.md`
 - Frozen configuration: `configs/ms_q0.json`
 - Upstream baseline audit: `docs/UPSTREAM_BASELINE_AUDIT.md`
 - Results: `results/ms_q0/`
@@ -20,3 +21,8 @@ the stronger baselines are staged: current vLLM on CUDA, the legacy CUDA model
 runner where it is stronger, and the official Ascend stack with only the
 targeted ATB accounting fix. The reverted ACL-graph pre-estimation patch is not
 an admissible baseline.
+
+The first MS-Q0 launch is retained as `blocked_stack_or_asset`: the observer
+initialized NPU state before vLLM forked TP workers, while the A100 shell lost
+its compiler PATH. Neither engine reached ready. MS-Q0-R1 is a prospective,
+source-frozen repair of only those two invocation boundaries.

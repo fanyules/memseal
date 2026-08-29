@@ -83,6 +83,7 @@ def engine_and_asset_valid(
         and run.get("workload_completed") is True
         and run.get("shutdown_complete") is True
         and not run.get("runtime_mismatches")
+        and run.get("post_init_runtime_mismatches") == []
     )
 
 
@@ -132,6 +133,7 @@ def local_correctness_valid(run: dict[str, Any], plan: str) -> bool:
         "within_wave_identical_requests",
         "within_run_determinism",
         "rank_dispatch_identity",
+        "post_init_device_identity",
         "resolved_kv_and_graph_config_retained",
         "engine_idle_after_run",
     ]

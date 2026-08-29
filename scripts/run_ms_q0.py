@@ -175,21 +175,24 @@ def find_cann_install_info() -> Path:
 
 
 def runtime_audit(platform: str, torch: Any, vllm: Any) -> dict[str, Any]:
+    visible_variable = (
+        "CUDA_VISIBLE_DEVICES" if platform == "a100" else "ASCEND_RT_VISIBLE_DEVICES"
+    )
+    visible_devices = [
+        item for item in os.environ.get(visible_variable, "").split(",") if item
+    ]
     if platform == "a100":
-        count = int(torch.cuda.device_count())
         return {
             "torch": str(torch.__version__),
             "vllm": str(vllm.__version__).split("+", 1)[0],
             "cuda": str(torch.version.cuda),
-            "visible_device_count": count,
-            "device_names": [torch.cuda.get_device_name(index) for index in range(count)],
+            "visible_device_count": len(visible_devices),
+            "visible_device_source": visible_variable,
         }
     driver = version_info(Path("/usr/local/Ascend/driver/version.info"))
     firmware = version_info(Path("/usr/local/Ascend/firmware/version.info"))
     cann_path = find_cann_install_info()
     cann = version_info(cann_path)
-    count = int(torch.npu.device_count())
-    names = [str(torch.npu.get_device_name(index)) for index in range(count)]
     return {
         "torch": str(torch.__version__),
         "torch_npu": package_version("torch-npu"),
@@ -201,8 +204,8 @@ def runtime_audit(platform: str, torch: Any, vllm: Any) -> dict[str, Any]:
         "firmware_package": firmware.get("package_version"),
         "cann": cann.get("version"),
         "cann_install_info_path": str(cann_path),
-        "visible_device_count": count,
-        "device_names": names,
+        "visible_device_count": len(visible_devices),
+        "visible_device_source": visible_variable,
     }
 
 
@@ -217,14 +220,6 @@ def runtime_mismatches(
         mismatches.append(
             f"visible_device_count: expected 4, observed {audit.get('visible_device_count')}"
         )
-    needle = expected["device_name_contains"].lower()
-    if len(audit.get("device_names", [])) != 4 or any(
-        needle not in str(name).lower() for name in audit.get("device_names", [])
-    ):
-        mismatches.append(
-            f"device_names: expected four containing {expected['device_name_contains']!r}, "
-            f"observed {audit.get('device_names')}"
-        )
     for name, wanted in expected.items():
         if name == "device_name_contains":
             continue
@@ -233,6 +228,31 @@ def runtime_mismatches(
             observed = str(observed).split("+", 1)[0]
         if observed != wanted:
             mismatches.append(f"{name}: expected {wanted}, observed {audit.get(name)}")
+    return mismatches
+
+
+def post_init_device_mismatches(
+    platform: str,
+    rows: Any,
+    config: dict[str, Any],
+) -> list[str]:
+    if not isinstance(rows, list) or len(rows) != 4:
+        return [f"expected four post-init worker snapshots, observed {type(rows).__name__}"]
+    by_rank = {
+        row.get("rank"): row
+        for row in rows
+        if isinstance(row, dict) and isinstance(row.get("rank"), int)
+    }
+    if set(by_rank) != {0, 1, 2, 3}:
+        return [f"post-init worker ranks differ from 0-3: {sorted(by_rank)}"]
+    needle = config["platforms"][platform]["expected"]["device_name_contains"].lower()
+    mismatches = []
+    for rank in range(4):
+        observed = str(by_rank[rank].get("device_name", ""))
+        if needle not in observed.lower():
+            mismatches.append(
+                f"rank {rank} device name expected to contain {needle!r}, observed {observed!r}"
+            )
     return mismatches
 
 
@@ -645,11 +665,6 @@ def execute(args: argparse.Namespace) -> dict[str, Any]:
     try:
         if mismatches:
             raise RuntimeError("frozen runtime mismatch: " + "; ".join(mismatches))
-        if args.platform == "a100":
-            torch.cuda.set_device(0)
-        else:
-            torch.npu.set_device(0)
-
         engine = config["engine"]
         plan = config["plans"][args.plan]
         kwargs: dict[str, Any] = {
@@ -689,6 +704,9 @@ def execute(args: argparse.Namespace) -> dict[str, Any]:
         )
         payload["memory_after_init"] = initial_memory
         payload["memory_after_init_error"] = initial_error
+        payload["post_init_runtime_mismatches"] = post_init_device_mismatches(
+            args.platform, initial_memory, config
+        )
         pool = token_pool(llm, config["workload"]["prompt_pattern"])
         payload["prompt_token_pool"] = pool
 
@@ -759,6 +777,7 @@ def execute(args: argparse.Namespace) -> dict[str, Any]:
             ),
             "common_memory_observability": reset_ok
             and all(memory_snapshot_valid(rows, required_fields) for rows in memory_rows),
+            "post_init_device_identity": not payload["post_init_runtime_mismatches"],
             "resolved_kv_and_graph_config_retained": (
                 payload["resolved_runtime"]["cache"]["kv_token_capacity"] > 0
                 and bool(payload["resolved_runtime"]["compilation"])
