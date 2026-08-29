@@ -1,0 +1,38 @@
+version: "0.4.0"
+project:
+  title: "MemSeal: Path-Complete Memory Admission for Compiled LLM Serving"
+  short_name: "MemSeal"
+  root: "."
+target_venue:
+  name: "ASPLOS / EuroSys"
+  year: "TBD"
+  mode: "experiment_only"
+stage:
+  current: "ms_q0_pre_output_implementation_ready"
+  gate: "MS-Q0"
+  updated_at: "2026-08-29"
+artifacts:
+  qualification_protocol: "docs/MS_Q0_PROTOCOL.md"
+  qualification_config: "configs/ms_q0.json"
+  qualification_results: "results/ms_q0/"
+  upstream_baseline_audit: "docs/UPSTREAM_BASELINE_AUDIT.md"
+claims:
+  - id: "MS-C0"
+    text: "A single profiling window leaves repeatable path- or order-dependent residual non-KV memory gaps after targeted upstream fixes."
+    status: "not_tested"
+  - id: "MS-C1"
+    text: "A pre-execution dominance reducer preserves the path-complete per-rank envelope with substantially fewer canaries."
+    status: "not_tested"
+  - id: "MS-C2"
+    text: "A ready seal can safely admit more KV capacity than strong transferable fixed-margin and one-shot profiling baselines."
+    status: "not_tested"
+experiments:
+  - id: "MS-Q0"
+    purpose: "TP4 correctness, dispatch, and common memory-observability qualification"
+    status: "implementation_ready_not_yet_frozen"
+  - id: "MS-G0D"
+    purpose: "Patched-stack path/lifetime discovery census"
+    status: "blocked_on_ms_q0_and_stack_staging"
+  - id: "MS-G0C"
+    purpose: "Fresh-process paired confirmation and dominance validation"
+    status: "blocked_on_discovery"

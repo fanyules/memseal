@@ -1,0 +1,99 @@
+{
+  "schema": "memseal.ms_q0.v1",
+  "evidence_scope": "engineering_qualification_not_paper_evidence",
+  "seed": 2026082901,
+  "model": {
+    "asset_id": "Qwen3-14B-BF16",
+    "path": "/data/models/qwen/Qwen3-14B-BF16",
+    "dtype": "bfloat16",
+    "config_sha256": "e73c3664ca09b10a673fef0c22e8a6b456201d49bd4713c9691f775720e8857a",
+    "index_sha256": "62d7ad35757bae5e7baa452cb1483178b7daa50e869e923226b8da10871f7ebc"
+  },
+  "platforms": {
+    "a100": {
+      "physical_devices": [0, 1, 2, 3],
+      "tp": 4,
+      "expected": {
+        "device_name_contains": "A100",
+        "torch": "2.11.0+cu128",
+        "vllm": "0.23.0",
+        "cuda": "12.8"
+      },
+      "additional_config": null
+    },
+    "910b": {
+      "physical_devices": [0, 1, 2, 3],
+      "tp": 4,
+      "expected": {
+        "device_name_contains": "910B",
+        "driver": "25.5.1",
+        "firmware": "7.8.0.6.201",
+        "cann": "9.1.0",
+        "torch": "2.10.0+cpu",
+        "torch_npu": "2.10.0.post4",
+        "vllm": "0.23.0",
+        "vllm_ascend": "0.23.0"
+      },
+      "additional_config": {
+        "enable_cpu_binding": true,
+        "enable_flashcomm1": false
+      }
+    }
+  },
+  "plans": {
+    "eager": {
+      "enforce_eager": true,
+      "compilation_config": null
+    },
+    "compiled": {
+      "enforce_eager": false,
+      "compilation_config": null
+    }
+  },
+  "engine": {
+    "max_model_len": 768,
+    "max_num_seqs": 8,
+    "max_num_batched_tokens": 1024,
+    "gpu_memory_utilization": 0.75,
+    "enable_prefix_caching": false,
+    "async_scheduling": false,
+    "disable_custom_all_reduce": true
+  },
+  "workload": {
+    "num_sequences": 8,
+    "prompt_tokens": 128,
+    "output_tokens": 8,
+    "waves": 3,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "ignore_eos": true,
+    "prompt_pattern": "MemSeal qualifies path-aware memory admission for compiled language model serving."
+  },
+  "execution": {
+    "fresh_processes_per_platform_plan": 1,
+    "engine_core_multiprocessing": false,
+    "timeout_seconds": 1200
+  },
+  "qualification": {
+    "require_four_rank_snapshots": true,
+    "require_rank_dispatch_identity": true,
+    "require_within_run_determinism": true,
+    "require_cross_plan_output_identity_within_platform": true,
+    "require_compiled_graph_dispatch": true,
+    "require_eager_only_dispatch": true,
+    "required_memory_fields": [
+      "free_bytes",
+      "total_bytes",
+      "allocated_bytes",
+      "reserved_bytes",
+      "peak_allocated_bytes",
+      "peak_reserved_bytes"
+    ]
+  },
+  "decisions": {
+    "all_checks_pass": "pass_unlock_stack_staging",
+    "correctness_or_rank_dispatch_failure": "stop_cross_runtime_memseal",
+    "common_memory_observability_failure": "stop_no_common_observability",
+    "engine_or_asset_failure": "blocked_stack_or_asset"
+  }
+}
