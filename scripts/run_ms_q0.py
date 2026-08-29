@@ -802,19 +802,25 @@ def execute(args: argparse.Namespace) -> dict[str, Any]:
                 payload["trace_cleanup_error"] = f"{type(error).__name__}: {error}"
                 payload["status"] = "failed"
                 payload["failure_stage"] = "trace_cleanup"
-        if llm is not None and hasattr(llm.llm_engine, "shutdown"):
-            shutdown_started = time.perf_counter_ns()
-            try:
-                llm.llm_engine.shutdown()
+        if llm is not None:
+            shutdown = getattr(llm.llm_engine, "shutdown", None)
+            if callable(shutdown):
+                shutdown_started = time.perf_counter_ns()
+                try:
+                    shutdown()
+                    payload["shutdown_complete"] = True
+                    payload["shutdown_mode"] = "engine_method"
+                except Exception as error:  # noqa: BLE001 - retain shutdown failure
+                    payload["shutdown_error_type"] = type(error).__name__
+                    payload["shutdown_error"] = str(error)
+                    payload["status"] = "failed"
+                    payload["failure_stage"] = "shutdown"
+                payload["shutdown_ms"] = (
+                    time.perf_counter_ns() - shutdown_started
+                ) / 1_000_000
+            else:
                 payload["shutdown_complete"] = True
-            except Exception as error:  # noqa: BLE001 - retain shutdown failure
-                payload["shutdown_error_type"] = type(error).__name__
-                payload["shutdown_error"] = str(error)
-                payload["status"] = "failed"
-                payload["failure_stage"] = "shutdown"
-            payload["shutdown_ms"] = (
-                time.perf_counter_ns() - shutdown_started
-            ) / 1_000_000
+                payload["shutdown_mode"] = "fresh_process_exit"
         payload["finished_at"] = datetime.now(timezone.utc).isoformat()
         payload["total_process_ms"] = (
             time.perf_counter_ns() - PROCESS_STARTED_NS
