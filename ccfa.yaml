@@ -8,7 +8,7 @@ target_venue:
   year: "TBD"
   mode: "experiment_only"
 stage:
-  current: "ms_q0_r1_repair_pre_freeze"
+  current: "ms_q0_r1_frozen_ready_to_run"
   gate: "MS-Q0-R1"
   updated_at: "2026-08-29"
 artifacts:
@@ -33,7 +33,7 @@ experiments:
     status: "blocked_runner_and_invocation_contract"
   - id: "MS-Q0-R1"
     purpose: "Prospective repair of pre-fork device audit and A100 PATH contract"
-    status: "implementation_ready_not_yet_frozen"
+    status: "frozen_not_run"
   - id: "MS-G0D"
     purpose: "Patched-stack path/lifetime discovery census"
     status: "blocked_on_ms_q0_and_stack_staging"
